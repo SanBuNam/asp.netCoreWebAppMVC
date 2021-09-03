@@ -33,5 +33,12 @@ namespace asp.netCoreWebAppMVC.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public JsonResult GetStudentDetails(int id)
+        {
+            TestStudentRepository repository = new TestStudentRepository();
+            Student studentDetails = repository.GetStudentById(id);
+            return Json(studentDetails);
+        }
     }
 }
