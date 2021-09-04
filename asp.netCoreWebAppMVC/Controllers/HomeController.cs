@@ -40,5 +40,12 @@ namespace asp.netCoreWebAppMVC.Controllers
             Student studentDetails = repository.GetStudentById(id);
             return Json(studentDetails);
         }
+
+        public JsonResult GetStudentGetAllStudent()
+        {
+            TestStudentRepository repository = new TestStudentRepository();
+            List<Student> studentDetails = repository.GetAllStudent();
+            return Json(studentDetails);
+        }
     }
 }
