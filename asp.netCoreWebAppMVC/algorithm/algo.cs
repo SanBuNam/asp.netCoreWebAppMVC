@@ -11,17 +11,16 @@ namespace asp.netCoreWebAppMVC.algorithm
         static string RemoveDuplicateChars(string key)
         {
             // Store encountered letters in this string.
-            string table = "";
+            string checker = "";
             // Store the result in this string.
             string result = "";
             // Loop over each character.
-            foreach(char value in key)
-            {
-                // See if character is in the table.
-                if(table.IndexOf(value) == -1)
+            foreach (char value in key)
+            {   // See if character is in the table.
+                if (checker.IndexOf(value) == -1)
                 {
-                    // Append to the table and the result.
-                    table += value;
+                    // Append to the checker and the result.
+                    checker += value;
                     result += value;
                 }
             }
@@ -35,10 +34,38 @@ namespace asp.netCoreWebAppMVC.algorithm
         {
             string result = "";
 
-            for (int i = x.Length - 1; i >= 0; i--)
+            for (var i = x.Length - 1; i >= 0; i--)
                 result += x[i];
+            
+            return result;
+        }
+    }
+
+    public static class Wordcount
+    {
+        //Count the number of words in a string (Needs to handle multiple spaces between words)
+        public static int Count(string x)
+        {
+            int result = 0;
+            // Trim white space from beginning and end of string
+            x = x.Trim();
+
+            // Necessary because foreach will execute once with empty string returing 1
+            if (x == "")
+                return 0;
+
+            // Ensure there is only one space between each word in the passed string
+            while (x.Contains("  "))
+                x = x.Replace("  ", " ");
+
+            // count the words
+            foreach (string y in x.Split(' '))
+                result++;
 
             return result;
         }
     }
+
+   
+
 }
