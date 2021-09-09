@@ -49,15 +49,12 @@ namespace asp.netCoreWebAppMVC.algorithm
             int result = 0;
             // Trim white space from beginning and end of string
             x = x.Trim();
-
             // Necessary because foreach will execute once with empty string returing 1
             if (x == "")
                 return 0;
-
             // Ensure there is only one space between each word in the passed string
             while (x.Contains("  "))
                 x = x.Replace("  ", " ");
-
             // count the words
             foreach (string y in x.Split(' '))
                 result++;
@@ -66,6 +63,30 @@ namespace asp.netCoreWebAppMVC.algorithm
         }
     }
 
-   
+    public class Palindrome
+    {
+        public static bool IsPalindrome(string word)
+        {
+            int min = 0;
+            int max = word.Length - 1;
+
+            while (true)
+            {
+                if (min > max)
+                    return true;
+                
+                char a = word[min];
+                char b = word[max];
+
+                if (char.ToLower(a) != char.ToLower(b))
+                    return false;
+
+                min++;
+                max--;
+            }
+        }
+    }
+
+
 
 }
