@@ -28,5 +28,10 @@ namespace asp.netCoreWebAppMVC.Models
         {
             return DataSource().FirstOrDefault(e => e.StudentID == StudentId);
         }
+
+        public List<Student> GetAllStudent()
+        {
+            return DataSource();
+        }
     }
 }

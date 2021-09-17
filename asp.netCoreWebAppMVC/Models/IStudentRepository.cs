@@ -8,7 +8,6 @@ namespace asp.netCoreWebAppMVC.Models
     public interface IStudentRepository
     {
         Student GetStudentById(int StudentId);
-
-        Student GetHonorStudentById(int StudentId);
+        List<Student> GetAllStudent();
     }
 }
