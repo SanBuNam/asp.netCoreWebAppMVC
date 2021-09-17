@@ -19,6 +19,11 @@ namespace asp.netCoreWebAppMVC.Models
             };
         }
 
+        public Student GetHonorStudentById(int StudentId)
+        {
+            throw new NotImplementedException();
+        }
+
         public Student GetStudentById(int StudentId)
         {
             return DataSource().FirstOrDefault(e => e.StudentID == StudentId);
