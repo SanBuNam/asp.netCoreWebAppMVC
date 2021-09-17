@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace asp.netCoreWebAppMVC.Models
 {
-    public interface IStudentRepository
+    public class HonorsStudent
     {
-        Student GetStudentById(int StudentId);
+        Student Student { get; set; }
 
-        Student GetHonorStudentById(int StudentId);
+        String HonorsGrade { get; set; }
+
+        int HonorsYear { get; set; }
     }
 }
