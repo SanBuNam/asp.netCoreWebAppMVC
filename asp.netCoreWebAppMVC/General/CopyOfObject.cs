@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Threading.Tasks;
 
 namespace asp.netCoreWebAppMVC.General
@@ -45,6 +47,41 @@ namespace asp.netCoreWebAppMVC.General
         public static CopyObjectConstructor GetInstance(CopyObjectConstructor x)
         {
             return new CopyObjectConstructor(x);
+        }
+    }
+
+    // Deep Clone - The following code example demonstrates how to implement the deep cloning through BinaryFormatter Serialize() and Deserialize() methods.
+    // For this to work, mark your class as serializable through [Serializable].
+    [Serializable]
+    public class CopyObjectDeepClone
+    {
+        public string str;
+    }
+
+    public static class DeepCopyExtensions
+    {
+        public static T DeepClone<T>(this T obj)
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, obj);
+                stream.Position = 0;
+
+                return (T)formatter.Deserialize(stream);
+            }
+        }
+    }
+
+    public class DeepCopyExample
+    {
+        public static void DeepCopyMain()
+        {
+            CopyObjectDeepClone obj = new CopyObjectDeepClone();
+            obj.str = "Hello!";
+
+            CopyObjectDeepClone copy = obj.DeepClone();
+            Console.WriteLine(copy.str);
         }
     }
 }
