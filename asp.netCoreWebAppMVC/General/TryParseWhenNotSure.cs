@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace asp.netCoreWebAppMVC.General
 {
+    // https://docs.microsoft.com/en-us/dotnet/api/system.exception?view=net-5.0
     public class TryParseBetter
     {
         // If you're not sure string is a valid DateTime, use DateTime.TryParse()
